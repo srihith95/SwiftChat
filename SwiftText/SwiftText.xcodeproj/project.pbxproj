@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D2CCDBE628DC800800DFAE75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCDBE528DC800800DFAE75 /* AppDelegate.swift */; };
 		D2CCDBE828DC800800DFAE75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCDBE728DC800800DFAE75 /* SceneDelegate.swift */; };
-		D2CCDBEA28DC800800DFAE75 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCDBE928DC800800DFAE75 /* ConversationsViewController.swift */; };
 		D2CCDBED28DC800800DFAE75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCDBEB28DC800800DFAE75 /* Main.storyboard */; };
 		D2CCDBEF28DC800B00DFAE75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CCDBEE28DC800B00DFAE75 /* Assets.xcassets */; };
 		D2CCDBF228DC800B00DFAE75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCDBF028DC800B00DFAE75 /* LaunchScreen.storyboard */; };
@@ -22,6 +21,8 @@
 		D2CCDC2228DC86CC00DFAE75 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCDC2128DC86CC00DFAE75 /* VideoPlayerViewController.swift */; };
 		D2CCDC2428DC873900DFAE75 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCDC2328DC873900DFAE75 /* NewConversationViewController.swift */; };
 		D2CCDC2628DC876500DFAE75 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCDC2528DC876500DFAE75 /* ProfileViewController.swift */; };
+		D2CCDC2928DCCC3F00DFAE75 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCDC2828DCCC3F00DFAE75 /* ConversationViewController.swift */; };
+		D2D7C40128DF13C900AC81EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D7C40028DF13C900AC81EE /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +46,6 @@
 		D2CCDBE228DC800800DFAE75 /* SwiftText.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftText.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCDBE528DC800800DFAE75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2CCDBE728DC800800DFAE75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D2CCDBE928DC800800DFAE75 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		D2CCDBEC28DC800800DFAE75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2CCDBEE28DC800B00DFAE75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2CCDBF128DC800B00DFAE75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +61,8 @@
 		D2CCDC2128DC86CC00DFAE75 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		D2CCDC2328DC873900DFAE75 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		D2CCDC2528DC876500DFAE75 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D2CCDC2828DCCC3F00DFAE75 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		D2D7C40028DF13C900AC81EE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,9 +143,8 @@
 		D2CCDC1528DC82E600DFAE75 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D2CCDBE928DC800800DFAE75 /* ConversationsViewController.swift */,
-				D2CCDC1B28DC862E00DFAE75 /* LoginViewController.swift */,
-				D2CCDC1D28DC867400DFAE75 /* RegisterViewController.swift */,
+				D2CCDC2828DCCC3F00DFAE75 /* ConversationViewController.swift */,
+				D2CCDC2A28DCCC4700DFAE75 /* Login */,
 				D2CCDC1F28DC86AA00DFAE75 /* PhotoViewerViewController.swift */,
 				D2CCDC2128DC86CC00DFAE75 /* VideoPlayerViewController.swift */,
 				D2CCDC2328DC873900DFAE75 /* NewConversationViewController.swift */,
@@ -180,6 +181,7 @@
 			children = (
 				D2CCDBE528DC800800DFAE75 /* AppDelegate.swift */,
 				D2CCDBE728DC800800DFAE75 /* SceneDelegate.swift */,
+				D2D7C40028DF13C900AC81EE /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -191,6 +193,15 @@
 				D2CCDBF028DC800B00DFAE75 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D2CCDC2A28DCCC4700DFAE75 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D2CCDC1B28DC862E00DFAE75 /* LoginViewController.swift */,
+				D2CCDC1D28DC867400DFAE75 /* RegisterViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,9 +337,10 @@
 			files = (
 				D2CCDC1C28DC862E00DFAE75 /* LoginViewController.swift in Sources */,
 				D2CCDC1E28DC867400DFAE75 /* RegisterViewController.swift in Sources */,
+				D2CCDC2928DCCC3F00DFAE75 /* ConversationViewController.swift in Sources */,
 				D2CCDC2428DC873900DFAE75 /* NewConversationViewController.swift in Sources */,
-				D2CCDBEA28DC800800DFAE75 /* ConversationsViewController.swift in Sources */,
 				D2CCDC2228DC86CC00DFAE75 /* VideoPlayerViewController.swift in Sources */,
+				D2D7C40128DF13C900AC81EE /* Extensions.swift in Sources */,
 				D2CCDBE628DC800800DFAE75 /* AppDelegate.swift in Sources */,
 				D2CCDC2628DC876500DFAE75 /* ProfileViewController.swift in Sources */,
 				D2CCDBE828DC800800DFAE75 /* SceneDelegate.swift in Sources */,

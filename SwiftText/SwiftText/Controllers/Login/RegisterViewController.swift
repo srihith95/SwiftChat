@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  RegisterViewController.swift
 //  SwiftText
 //
 //  Created by Srihith Prudhivi on 22/09/22.
@@ -7,10 +7,11 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemTeal
 
         // Do any additional setup after loading the view.
     }

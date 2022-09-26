@@ -126,12 +126,12 @@ class RegisterViewController: UIViewController {
         view.backgroundColor = .white
         
         /*navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(didTapRegister))*/
+         style: .done,
+         target: self,
+         action: #selector(didTapRegister))*/
         registerButton.addTarget(self,
-                              action: #selector(registerButtonTapped),
-                              for: .touchUpInside)
+                                 action: #selector(registerButtonTapped),
+                                 for: .touchUpInside)
         
         emailField.delegate = self
         passwordField.delegate = self
@@ -166,13 +166,13 @@ class RegisterViewController: UIViewController {
         imageView.layer.cornerRadius = imageView.width/2.0
         
         firstNameField.frame = CGRect(x: 30,
-                                  y: imageView.bottom + 40,
-                                  width: scrollView.width - 60,
-                                  height: 55)
+                                      y: imageView.bottom + 40,
+                                      width: scrollView.width - 60,
+                                      height: 55)
         lastNameField.frame = CGRect(x: 30,
-                                  y: firstNameField.bottom + 10,
-                                  width: scrollView.width - 60,
-                                  height: 55)
+                                     y: firstNameField.bottom + 10,
+                                     width: scrollView.width - 60,
+                                     height: 55)
         emailField.frame = CGRect(x: 30,
                                   y: lastNameField.bottom + 10,
                                   width: scrollView.width - 60,
@@ -182,13 +182,13 @@ class RegisterViewController: UIViewController {
                                      width: scrollView.width - 60,
                                      height: 55)
         confirmPasswordField.frame = CGRect(x: 30,
-                                  y: passwordField.bottom + 15,
-                                  width: scrollView.width - 60,
-                                  height: 55)
+                                            y: passwordField.bottom + 15,
+                                            width: scrollView.width - 60,
+                                            height: 55)
         registerButton.frame = CGRect(x: 235,
-                                   y: confirmPasswordField.bottom + 15,
-                                   width: scrollView.width - 265,
-                                   height: 55)
+                                      y: confirmPasswordField.bottom + 15,
+                                      width: scrollView.width - 265,
+                                      height: 55)
     }
     
     @objc private func didTapChangeProfilePic()
@@ -226,17 +226,34 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        //Firebase user creation
-        
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
-            guard let result = authResult, error == nil else {
-                print("Error creating user")
+        DatabaseManager.shared.userExists(with: email, completion: { exists in
+            guard exists else {
+                //user already exists
+                self.alertUserLoginError(message: "Looks like a user account for that email already exists")
                 return
             }
             
-            let user = result.user
-            print("Created User: \(user)")
+            //Firebase user creation
+            
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] authResult, error in
+                guard let strongSelf = self else {
+                    return
+                }
+                guard authResult != nil, error == nil else {
+                    print("Error creating user")
+                    return
+                }
+                
+                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
+                                                                    lastName: lastName,
+                                                                    emailAddress: email))
+                
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            })
+            
+            
         })
+        
         
         
         if !(passwordField.text == confirmPasswordField.text){
@@ -245,9 +262,10 @@ class RegisterViewController: UIViewController {
         }
     }
     
-    func alertUserLoginError(){
+    func alertUserLoginError(message: String = "Please enter all the correct information to login."){
         let alert = UIAlertController(title: "Woopsie 😣 ",
-                                      message: "Please enter all the correct information to login.", preferredStyle: .alert)
+                                      message: message,
+                                      preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss",
                                       style: .cancel, handler: nil))
         
@@ -278,21 +296,21 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     
     func presentPhotoActionSheet(){
         let actionSheet = UIAlertController(title: "Profile Picture",
-                                      message: "How would you like to pick the profile picture",
-                                      preferredStyle: .actionSheet)
+                                            message: "How would you like to pick the profile picture",
+                                            preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Take photo",
-                                      style: .default,
-                                      handler: { [weak self]_ in
+                                            style: .default,
+                                            handler: { [weak self]_ in
             self?.presentCamera()
         }))
         actionSheet.addAction(UIAlertAction(title: "Choose Photo",
-                                      style: .default,
-                                      handler: { [weak self]_ in
+                                            style: .default,
+                                            handler: { [weak self]_ in
             self?.presentPhotoPicker()
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel",
-                                      style: .cancel,
-                                      handler: nil))
+                                            style: .cancel,
+                                            handler: nil))
         present(actionSheet, animated: true)
     }
     
@@ -330,4 +348,4 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         picker.dismiss(animated: true, completion: nil)
     }
 }
- 
+

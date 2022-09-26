@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E2B6B5DACCE974ACFB9799D /* Pods_SwiftTextTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C144F036F23675D4FD9F694 /* Pods_SwiftTextTests.framework */; };
 		868069B41257675F60115F60 /* Pods_SwiftText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A0E4C90509075913D289D9 /* Pods_SwiftText.framework */; };
+		D26534B928E235DC00BE5D07 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26534B828E235DC00BE5D07 /* DatabaseManager.swift */; };
 		D2CCDBE628DC800800DFAE75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCDBE528DC800800DFAE75 /* AppDelegate.swift */; };
 		D2CCDBE828DC800800DFAE75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCDBE728DC800800DFAE75 /* SceneDelegate.swift */; };
 		D2CCDBED28DC800800DFAE75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CCDBEB28DC800800DFAE75 /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		63B320FACDC0136B60D60E3E /* Pods-SwiftTextTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTextTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftTextTests/Pods-SwiftTextTests.release.xcconfig"; sourceTree = "<group>"; };
 		81A0E4C90509075913D289D9 /* Pods_SwiftText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF0B9883595CCBC2409297E /* Pods-SwiftText.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftText.debug.xcconfig"; path = "Target Support Files/Pods-SwiftText/Pods-SwiftText.debug.xcconfig"; sourceTree = "<group>"; };
+		D26534B828E235DC00BE5D07 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		D2CCDBE228DC800800DFAE75 /* SwiftText.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftText.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2CCDBE528DC800800DFAE75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2CCDBE728DC800800DFAE75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				D2CCDBE528DC800800DFAE75 /* AppDelegate.swift */,
 				D2CCDBE728DC800800DFAE75 /* SceneDelegate.swift */,
 				D2D7C40028DF13C900AC81EE /* Extensions.swift */,
+				D26534B828E235DC00BE5D07 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2CCDC1C28DC862E00DFAE75 /* LoginViewController.swift in Sources */,
+				D26534B928E235DC00BE5D07 /* DatabaseManager.swift in Sources */,
 				D2CCDC1E28DC867400DFAE75 /* RegisterViewController.swift in Sources */,
 				D2CCDC2928DCCC3F00DFAE75 /* ConversationViewController.swift in Sources */,
 				D2CCDC2428DC873900DFAE75 /* NewConversationViewController.swift in Sources */,

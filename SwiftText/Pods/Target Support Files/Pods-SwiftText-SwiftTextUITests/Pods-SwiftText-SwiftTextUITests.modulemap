@@ -1,0 +1,6 @@
+framework module Pods_SwiftText_SwiftTextUITests {
+  umbrella header "Pods-SwiftText-SwiftTextUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

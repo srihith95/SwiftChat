@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -75,6 +76,12 @@ class LoginViewController: UIViewController {
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(didTapRegister))
+        loginButton.addTarget(self,
+                              action: #selector(loginButtonTapped),
+                              for: .touchUpInside)
+        
+        emailField.delegate = self
+        passwordField.delegate = self
         
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)   //Adding subviews
@@ -90,7 +97,7 @@ class LoginViewController: UIViewController {
         scrollView.frame = view.bounds
         //let size = view.frame.size.width
         imageView.frame = CGRect(x: (view.width)/25,
-                                 y: 0,
+                                 y: -30,
                                  width: view.width,
                                  height: view.width)
         emailField.frame = CGRect(x: 30,
@@ -101,6 +108,7 @@ class LoginViewController: UIViewController {
                                   y: emailField.bottom + 15,
                                   width: scrollView.width - 60,
                                   height: 55)
+
         loginButton.frame = CGRect(x: 275,
                                   y: passwordField.bottom + 19,
                                   width: scrollView.width - 305,
@@ -115,7 +123,51 @@ class LoginViewController: UIViewController {
         
     }
     
+    @objc private func loginButtonTapped()
+    {
+        
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
 
+        guard let email = emailField.text, let password = passwordField.text,
+              !email.isEmpty, !password.isEmpty, password.count >= 6 else {
+            alertUserLoginError()
+            return
+        }
+        
+        //Firebase login
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {authResult, error in
+            guard let result = authResult, error == nil else{
+                print("Failed logging user in with email: \(email)")
+                return
+            }
+            
+            let user = result.user
+            print("User logged in: \(user)")
+        })
+    }
     
+    func alertUserLoginError(){
+        let alert = UIAlertController(title: "Woopsie 😣 ",
+                                      message: "Please enter all the correct information to login.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss",
+                                      style: .cancel, handler: nil))
+        
+        present(alert, animated: true)
+    }
 
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == emailField {
+            passwordField.becomeFirstResponder()
+        }
+        else if textField == passwordField {
+            loginButtonTapped()
+        }
+        
+        return true
+    }
 }
